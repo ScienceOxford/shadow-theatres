@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Code your own Shadow Puppet Theatre</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script defer src="https://pyscript.net/releases/2023.05.1/pyscript.js"></script>
+</head>
+
+<body>
+  <header>
+    <header>
+      <a href="https://scienceoxford.com" target="_blank"><img src=".\images\so_logo.png" alt="Science Oxford Logo" width="400px" height="auto"></a>
+    <h1>CCC - Code your own Shadow Puppet Theatre</h1>
+  </header>
+
+  <div id="intro">
+    <p>Resources for the 'Code your own Shadow Puppet Theatre' Creative Computing Club.</p>
+    <p>During this workshop, you will use a BBC micro:bit to control addressable LEDs (Neopixels), to make your own programmable shadow puppet theatre.</p>
+    <p>This page recaps what <a href="https://bit.ly/Nov23CCC" target="_blank">we discussed as a group</a>.</p>
+    <p>Instructions to <a href=".\ShadowTheatreInstructions.pdf">make your own Shadow Theatre at home</a>.</p>
+    <br>
+  </div>
+
+  <div id="starter" class="left">
+    <h3>Coding a micro:bit in Python</h3>
+    <p>Open the Python editor by visiting <a href="https://python.microbit.org/" target="_blank">python.microbit.org/</a>. Your screen will look something like this:</p>
+    <img src="https://raw.githubusercontent.com/ScienceOxford/musical-microbits/main/images/python-editor.PNG" alt="screenshot of the Python editor screen" width="800px" height="auto">
+    <br>
+    <ul>
+      <li>In the middle is where you will add your own code.</li>
+      <li>On the left-hand-side is the reference menu - you can see examples of some of the code here, as well as help understanding these examples.</li>
+      <li>On the right-hand-side is the simulator - a pretend micro:bit you can use to test your code.</li>
+      <li>On the bottom is the Send to Micro:bit button, which you will use to send code to your physical micro:bit.</li>
+    </ul>
+    <br>
+    <p>Edit the code on the screen, then flash it to your micro:bit to see the changes.</p>
+    <p>Try:</p>
+    <ul>
+        <li>Editing the <code>Image</code> that is shown (hint: check the reference menu, under Display, for a list of images)</li>
+        <li>Changing the number in the brackets after <code>sleep</code> (hint: this tells the micro:bit how long to keep your image on the display)</li>
+        <li>Making the micro:bit scroll your name instead of <code>'Hello'</code></li>
+    </ul>
+    <br>
+    <p class="debugging"><strong>Set-up code: </strong> if you are in our workshop, the following code will be in your program already. It is needed to make the later things work, and we will explain it as we go through.</p>
+    <p>If you are not in our workshop, copy and paste all of these lines into the top of your project:</p>
+    <pre>from microbit import *
+import neopixel
+import music
+
+lights = neopixel.NeoPixel(pin16, 10)
+
+red = (100, 0, 0)
+green = (0, 100, 0)
+blue = (0, 0, 100)
+white = (100, 100, 100)</pre>
+    <br>
+  </div>
+
+  <div id="wiring-neopixels" class="left">
+    <h3>Wiring your Neopixels</h3>
+    <p>Neopixels are special LEDs connected together - you can program them all seperately from only one pin of the micro:bit!</p>
+    <p>They come in lots of shapes and sizes; if you are Science Oxford's workshop, a strip of 10 are attached to the inside of your shadow theatre.</p>
+    <img src="https://raw.githubusercontent.com/ScienceOxford/shine-on/main/images/neopixel-types.JPG" alt="10 square LEDs on a black strip; a strip of 8 square LEDs, closer together, on a black strip; a strip of 8 square LEDs, closer together, on a white strip" width="800px" height="auto">
+    <br>
+    <p>Neopixels have three connections:</p>
+    <ul>
+        <li>Ground / GND / - : connect this to the micro:bit's GND pin</li>
+        <li>Data / Din : connect this to the micro:bit's pin0</li>
+        <li>Power / 5V / + : connect this to the micro:bit's 3V pin</li>
+    </ul>
+    <p>In our workshop, they are wired up to a micro:bit edge connector. Slot your micro:bit into the connector, with the display facing up.</p>
+    <img scr=".\images\edge-connector.JPG" alt="micro:bit in an edge connector, with wires coming out of the connector" width="800px" height="auto">
+    <br>
+  </div>
+
+  <div id="coding-neopixels" class="left">
+    <h3>Turning on you Neopixel stage lights</h3>
+    <p>To use the Neopixels as your stage lighting, we have written some set-up code for you. The most important line is this one:</p>
+    <pre>lights = neopixel.NeoPixel(pin16, 10)</pre>
+    <br>
+    <p>This says that you have connected them to <strong>pin16</strong>, and that there are <strong>10</strong> pixels in the strip. If this is not true, you can change these options.</p>
+    <br>
+    <p>Add the following code into your program (above<code> while True</code>) and test it:</p>
+    <pre>for i in range(0, 10):
+    lights[i] = red
+    lights.show()</pre>
+    <br>
+    <p>This code does the following things:</p>
+    <ul>
+        <li>Loops around every pixel in the strip, one at a time.</li>
+        <li>Sets that pixel to red</li>
+        <li>Turns that pixel on</li>
+    </ul>
+    <br>
+    <p><strong>Choose a 'puppet' and test out your shadow theatre.</strong></p>
+    <p>What colour best represents the puppet you have chosen? Is it a hero or a villain?</p>
+    <h5>Need some story inspiration? Try our Random Story Generator!</h5>
+      <div id="generator">
+        <p><em>To get a random story, leave all the boxes blank.</em></p>
+        <p><em>Fill in any of the boxes to add your own ideas.</em></p>
+        <input type="text" name="character" id="character" placeholder="a random character..."/>
+        <br>
+        <input type="text" name="location" id="location" placeholder="a random location..."/>
+        <br>
+        <input type="text" name="style" id="style" placeholder="a random style..."/>
+        <br>
+        <br>
+        <button py-click="story()" id="run">Click Here</button>
+        <br>
+        <br>
+        <h5><div id="output"></div></h5>
+        <py-config src="./pyscript.toml"></py-config>
+        <py-script src="./main.py"></py-script>
+      </div>
+    <p><strong>Edit the code for this scene of your play.</strong></p>
+    <ul>
+        <li>Can you change the colour of the lights?</li>
+        <li>Can you add a sound effect or musical tune, either before or after the lights turn on?</li>
+    </ul>
+    <br>
+  </div>
+
+  <div id="segmented-neopixels" class="left">
+    <h3>Left lights, right lights, middle lights...</h3>
+    <p>Instead of turning all of your lights on the same colour, you can split them into sections.</p>
+    <p>ADD THE CODE EXAMPLES HERE</p>
+    <br>
+    <p>Think about how you could use this as part of your story</p>
+    <ul>
+      <li>Two characters, each with their own lighting?</li>
+      <li>Using light to show where a character should move to?</li>
+      <li>...</li>
+    </ul>
+    <br>
+  </div>
+
+  <div id="colours" class="left">
+    <h3>Adding more colours</h3>
+    <p>So far, we have used 'red' 'green' 'blue' and 'white'. They have been defined using <strong>variables</strong>, so that you can use the name instead of the numbers that make them.</p>
+    <p>Each number has a format like this:</p>
+    <pre>colour-name = (red-amount, green-amount, blue-amount)</pre>
+    <br>
+    <p>The colours can be <strong>mixed</strong> to make different colours, e.g.</p>
+    <pre>yellow = (100, 100, 0)</pre>
+    <br>
+    <p>Use an online colour picker, like this one from <a href="https://www.w3schools.com/colors/colors_picker.asp" target="_blank">w3schools.com</a>, to find the RGB values of your favourite colours.</p>
+    <p>Choose two or three to start with, and make them into variables. Remember to test them by telling the lights to turn on to that colour!</p>
+    <br>
+  </div>
+
+  <div id="extensions" class="left">
+    <h3>Next steps</h3>
+    <p>...</p>
+  </div>
+
+  <footer class="links">
+    <a href="https://github.com/ScienceOxford/balls-down-the-wall" target="_blank">View on GitHub</a>
+  </footer>
+
+</body>
+
+</html>
