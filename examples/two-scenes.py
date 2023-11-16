@@ -30,6 +30,7 @@ SCENE 2:
 'the castle vanished, and the rabbit was very confused'
 '''
 display.show(2)
+# lights
 for i in range (0, 10):
     lights[i] = blue
 lights.show()

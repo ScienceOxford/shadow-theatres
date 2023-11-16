@@ -24,8 +24,6 @@ def scene1():
     lights.show()
     # sound
     music.play(music.BADDY)
-    # pause for narration
-    sleep(4000)
 
 def scene2():
     '''
@@ -33,14 +31,14 @@ def scene2():
     'the castle vanished, and the rabbit was very confused'
     '''
     display.show(2)
+    # lights
     for i in range (0, 10):
         lights[i] = blue
     lights.show()
-    # pause for narration
-    sleep(5000)
 
 while True:
     scene = 0
+    # click button A when you are ready for the next scene
     if button_a.was_pressed():
         scene += 1
         sleep(200)
