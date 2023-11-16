@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Random Story Generator</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script defer src="https://pyscript.net/releases/2023.05.1/pyscript.js"></script>
+</head>
+
+<body>
+  <header>
+    <a href="https://scienceoxford.com" target="_blank"><img src=".\images\so_logo.png" alt="Science Oxford Logo" width="400px" height="auto"></a>
+    <h1>Random Story Generator</h1>
+  </header>
+
+  <div id="generator">
+    <h3>This is a story generator.</h3>
+    <p>To get a completely random story, leave all the boxes blank.</p>
+    <p>Fill in any of the boxes to add your own ideas!</p>
+    <input type="text" name="character" id="character" placeholder="a random character..."/>
+    <br>
+    <input type="text" name="location" id="location" placeholder="a random location..."/>
+    <br>
+    <input type="text" name="style" id="style" placeholder="a random style..."/>
+    <br>
+    <br>
+    <button py-click="story()" id="run">Click Here</button>
+    <br>
+    <br>
+    <h5><div id="output"></div></h5>
+    <py-config src="./pyscript.toml"></py-config>
+    <py-script src="./main.py"></py-script>
+  </div>
+
+  <footer class="links">
+    <a href="https://isioviel.pyscriptapps.com/random-story-generator/latest/" target="_blank">Created with PyScript</a>
+  </footer>
+
+</body>
+
+</html>

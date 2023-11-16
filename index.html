@@ -126,14 +126,58 @@ white = (100, 100, 100)</pre>
   <div id="segmented-neopixels" class="left">
     <h3>Left lights, right lights, middle lights...</h3>
     <p>Instead of turning all of your lights on the same colour, you can split them into sections.</p>
-    <p>ADD THE CODE EXAMPLES HERE</p>
+    <p>In this code example, half of the lights are red, the other half are white:</p>
+    <pre>for i in range(0, 5):
+    lights[i] = red
+for i in range(5, 10):
+    lights[i] = white
+lights.show()</pre>
+    <br>
+    <p>The two numbers in the <code>range</code> method, are the pixel it <strong>starts</strong> from, and the final pixel it should find <strong>before stopping</strong> - it does not run the code on this one.</p>
+    <p>This is why pixel 5 is in the code twice - in the first range, the code stops <strong>before</strong> 5.</p>
     <br>
     <p>Think about how you could use this as part of your story</p>
     <ul>
       <li>Two characters, each with their own lighting?</li>
       <li>Using light to show where a character should move to?</li>
-      <li>...</li>
     </ul>
+    <br>
+  </div>
+
+  <div id="example-scenes" class="left">
+    <h3>Example scenes</h3>
+    <pre>'''
+SCENE 1:
+'the rabbit walked towards the spooky castle'
+'''
+display.show(1)
+
+# lights
+for i in range(0, 5):
+    lights[i] = red
+for i in range(5, 10):
+    lights[i] = white
+lights.show()
+
+# sound
+music.play(music.BADDY)
+
+# pause for narration
+sleep(4000)</pre>
+    <br>
+    <pre>'''
+SCENE 2:
+'the castle vanished, and the rabbit was very confused'
+'''
+display.show(2)
+
+# lights
+for i in range (0, 10):
+    lights[i] = blue
+lights.show()
+
+# pause for narration
+sleep(5000)</pre>
     <br>
   </div>
 
@@ -153,7 +197,19 @@ white = (100, 100, 100)</pre>
 
   <div id="extensions" class="left">
     <h3>Next steps</h3>
-    <p>...</p>
+    <p>Design your play, using lights, sound effects and your chosen characters.</p>
+    <p>You can use our <a href=".\ScenePlanner.pdf">scene planner</a> to help you.</p>
+    <p><strong>Create your scenes one at a time, and test them before adding the next one.</strong></p>
+    <p>You could also...</p>
+    <ul>
+      <li>Create your own shadow puppets using using card and lolly sticks.</li>
+      <li>Add introduction and ending scenes, with music and lighting effects.</li>
+    </ul>
+    <p>If you are already familiar with Python and micro:bits, and want to challenge yourself...</p>
+    <ul>
+      <li>Write your own Python <strong>functions</strong> to make your code more efficient.</li>
+      <li>Use the micro:bit's buttons to control when things happen.</li>
+    </ul>
   </div>
 
   <footer class="links">
