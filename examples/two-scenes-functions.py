@@ -36,14 +36,19 @@ def scene2():
         lights[i] = blue
     lights.show()
 
+lights.clear()
+scene = 0
+played = False
 while True:
-    scene = 0
     # click button A when you are ready for the next scene
     if button_a.was_pressed():
         scene += 1
+        played = False
         sleep(200)
-    if scene == 1:
+    if scene == 1 and played == False:
         scene1()
-    elif scene == 2:
+        played = True
+    elif scene == 2 and played == False:
         scene2()
+        played = True
 
